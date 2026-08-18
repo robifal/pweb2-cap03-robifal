@@ -19,3 +19,20 @@
 // });
 //
 // server.listen(PORT, () => console.log(`Servidor em http://localhost:${PORT}`));
+
+
+import http from 'node:http';
+
+const PORT = process.env.PORT || 3000;
+
+const server = http.createServer((req, res) => {
+   if (req.method === 'GET') {
+      res.writeHead(200, { 'Content-Type': 'text/plain'});
+
+    res.end('Ola,mundo')
+  }
+});
+
+server.listen(PORT, () => console.log(`Servidor em http://localhost:${PORT}`));
+
+        
