@@ -26,10 +26,13 @@ import http from 'node:http';
 const PORT = process.env.PORT || 3000;
 
 const server = http.createServer((req, res) => {
-   if (req.method === 'GET') {
+   if (req.url === '/' && req.method === 'GET') {
       res.writeHead(200, { 'Content-Type': 'text/plain'});
 
-    res.end('Ola,mundo')
+    if (req.url === 'sobre')
+      res.writeHead(200, { 'Content-Type': 'text/html'})
+    return res.end('<h1>sobre</h1>')
+
   }
 });
 
